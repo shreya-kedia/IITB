@@ -23,20 +23,20 @@ if(isset($_POST['login']))
                 session_start();
                 $_SESSION["email"] = $email;
                 echo $_SESSION["email"];
-                Header('Location: ../php/dashboard.php' );
+                Header('Location: dashboard.php' );
                 
             }
             else
             {
                 // $_SESSION['loginsuccess']=0;
-                Header('Location: login_index.php?loginsuccess=0' );
+                Header('Location: ../html/login_index.php?loginsuccess=0' );
             }
         }
         
     }
     else
     {
-        Header('Location: login.php?nouser=1');
+        Header('Location: ../html/login_index.php?nouser=0' );
     }
     
     

@@ -1,5 +1,7 @@
 <?php
 include('..\php\addWorkshop.php');
+include('..\php\login_cordinator.php');
+
 ?>
 <!DOCTYPE html>
 <htmls>
@@ -12,35 +14,40 @@ include('..\php\addWorkshop.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../css/login_css.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    
-    <!-- <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
-        type="text/css" />
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
 
 <body>
 
+  
+
     <div class="login-dark">
+    
+    
 
     <!-- <div class="container-fluid"> -->
 
           <!-- Page Heading -->
-          <br><br>
+          <!-- <br><br> -->
+          
           <div class="form-group">
-<a  style="margin-left:17px;"  class="btn btn-light" data-toggle="modal" href="#AddNewModal">
+<a  style="margin-left:17px;margin-top:17px;"  class="btn btn-light" data-toggle="modal" href="#AddNewModal">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
 </svg>
                 Add new workshop
 </a>
-<a  style="margin-left:17px; float:right;margin-right:17px;"  class="btn btn-light" data-toggle="modal" href="#MonthlyReport">
+<a  style="margin-left:17px;margin-top:17px;"  class="btn btn-light" data-toggle="modal" href="#MonthlyReport">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
 </svg>
                 Add monthly report
 </a>
+<a href="../php/logout.php" class="btn btn-light btn-md" style="float:right;margin-right:17px;margin-bottom:17px;margin-top:17px;">
+<i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+        </a>
           
 </div>
 
@@ -315,7 +322,7 @@ include('..\php\addWorkshop.php');
                 <button class="btn btn-primary" type="submit"  id='submit' name="upload_reports">Submit</button>                    
                 <!-- <button class="btn btn-primary" data-dismiss="modal" type="submit" name="add_workshop">Add Workshop</button> -->
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
-                  <i class="fas fa-times"></i>
+                <i class="fa fa-close"></i>
                   Close</button>
                 </ul> 
               </div>
@@ -343,14 +350,32 @@ include('..\php\addWorkshop.php');
             <div class="col-lg-10 mx-auto">
               <div class="modal-body">
                 <ul class="list-inline">
+                <div class="form-group">
+                <select class="form-control custom-select" id="dlMonth" name="month" data-toggle="tooltip" data-placement="top" title="Month">
+  <option value="1">Jan</option>
+  <option value="2">Feb</option>
+  <option value="3">Mar</option>
+  <option value="4">Apr</option>
+  <option value="5">May</option>
+  <option value="6">June</option>
+  <option value="7">Jul</option>
+  <option value="8">Aug</option>
+  <option value="9">Sept</option>
+  <option value="10">Oct</option>
+  <option value="11">Nov</option>
+  <option value="12">Dec</option>
+</select>
+  </div>
                     <div class="form-group">
-                    <label for="formFileMultiple" class="form-label">Upload Monthly</label>
-                    <input class="form-control" type="file" id="formFileMultiple" name="report" multiple />
+                    <!-- <label for="formFileMultiple" class="form-label">Upload Monthly</label> -->
+                    <input class="form-control form-control-user" type="file" id="formFileMultiple" name="report" multiple />
                     </div>  
+                    
+                    
                 <button class="btn btn-primary" type="submit"  id='submit' name="upload_reports">Submit</button>                    
                 <!-- <button class="btn btn-primary" data-dismiss="modal" type="submit" name="add_workshop">Add Workshop</button> -->
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
-                  <i class="fas fa-times"></i>
+                <i class="fa fa-close"></i>
                   Close</button>
                 </ul> 
               </div>
@@ -365,9 +390,19 @@ include('..\php\addWorkshop.php');
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  </body>
 <script>
   document.getElementById("myDate").min = new Date().getFullYear() + "-" +  parseInt(new Date().getMonth() + 1 ) + "-" + new Date().getDate()
+  
+  var currentMonth = new Date().getMonth();
+  $("option").each(function() {
+    if ($(this).val() > currentMonth) {
+      $(this).css("display", "none");
+    }
+  });
+
+TimesheetDownloadPageOnLoad();
 </script>
 
 </html>

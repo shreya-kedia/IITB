@@ -1,7 +1,27 @@
 <?php
 include('..\php\login_cordinator.php');
-//include('..\php\captcha.php');
+if ( isset($_GET['loginsuccess']) && $_GET['loginsuccess'] == 0 )
+{
+  unset($_GET['loginsuccess']);
 ?>
+    <div class="alert alert-danger" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Wrong Password!</strong>
+    </div>
+<?php
+}
+if ( isset($_GET['nouser']) && $_GET['nouser'] == 0 )
+{
+  unset($_GET['nouser']);
+?>
+<div class="alert alert-danger" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>User Not found.</strong>
+    </div>
+<?php
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -99,5 +119,14 @@ var refreshButton = document.querySelector(".refresh-captcha");
 refreshButton.onclick = function() {
   document.querySelector(".captcha-image").src = '../php/captcha.php?' + Date.now();
 }
+</script>
+<script>
+  $('form').each(function() { this.reset() });
+  $(document).ready(function() {
+    // show the alert
+    setTimeout(function() {
+        $(".alert").alert('close');
+    }, 3000);
+});
 </script>
 </html>

@@ -11,7 +11,7 @@ if(isset($_POST['register']))
     if($result)
             {
                 // $_SESSION['accountsuccess']=1;
-                Header( 'Location: register.php?success=1');
+                Header( 'Location:login_index.php');
             }
             else
             {
